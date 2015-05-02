@@ -1,0 +1,7 @@
+<% list(articles.filter(can.route.attr('tag')), function(article){ %>
+    <article class="post tag-photo tag-music post__wrapper" data-cols="4" data-id="<%= article.id %>" <%= (el)-> el.data('article', article) %>>
+        <%== can.view.render('views/articleView.ejs', {
+            article: article
+        }) %>   
+    </article>
+<% }) %>

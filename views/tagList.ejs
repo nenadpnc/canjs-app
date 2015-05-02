@@ -1,0 +1,5 @@
+<span class="menu__item">Tags: </span>
+<a href="javascript://" data-tag="all" class="menu__item tag">all</a>
+<% $.each(tags, function(i, tag){ %>
+    <a href="javascript://" data-tag="<%= tag.title %>" class="menu__item tag"><%= tag.title %></a>
+<% }) %>

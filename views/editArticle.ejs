@@ -1,0 +1,48 @@
+<form class="article" id="frmArticle" <%= (el)-> el.data('article', article) %>>
+    <div class="container">
+        <div class="col-left">
+            <div class="col-row">
+                <label for="image">Select image: </label>
+                <select class="right" name="imgSrc" id="image">
+                    <% $.each(images, function(i, image){ %>
+                        <option value="<%= image.src %>" <%= article.imgSrc === image.src ? "selected" : "" %>><%= image.src %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="col-row">
+                <label for="title">Title: </label>
+                <input class="right" type="text" id="title" name="title" placeholder="Add Tilte" <%= article.attr('title') ? "value='" + article.title + "'" : "" %>>
+            </div>
+            <div class="col-row">
+                <label for="txtPreview">Text preview: </label>
+                <textarea class="right" id="txtPreview" name="txtPreview" rows="3"><%= article.txtPreview ? article.txtPreview : "Add description preview" %></textarea>
+            </div>
+            <div class="col-row">
+                <label for="htmlTxt">Text: </label>
+                <textarea class="right" id="htmlTxt" name="htmlTxt" rows="5"><%= article.htmlTxt ? article.htmlTxt : "Add description" %></textarea>
+            </div>
+            <div class="col-row">
+                <label for="date">Date: </label>
+                <input class="right" type="text" id="date" name="date" placeholder="Add date" <%= article.attr('date') ? "value='" + article.date + "'" : "" %>>
+            </div>
+            <div class="col-row">
+                <label for="tags">Tags: </label>
+                <div class="right width-70" id="tags">
+                    <% $.each(tags, function(i, tag){ %>
+                        <div>
+                            <input type="checkbox" id="<%= tag.id %>" data-text="<%= tag.title %>" <%= typeof article.tags !== 'undefined' && article.tags.indexOf(tag.title) > -1 ? "checked" : "" %>>
+                            <label for="<%= tag.id %>"><%= tag.title %></label>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="col-row">
+                <a class="side-space" href="javascript://" id="saveArticle">Save</a>
+                <a id="cancel" class="side-space" href="javascript://">Cancel</a>
+            </div>
+        </div>
+        <div class="col-right">
+            <img id="imgPreview" width="100%" height="auto" src="<%= article.attr("imgSrc") ? article.imgSrc : images[0].src %>" alt="Select image..." >
+        </div>
+    </div>
+</form>
