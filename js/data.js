@@ -166,7 +166,7 @@ var Data = (function(){
     };
     
     function createArticle(article){
-        article['id'] = articles.length + 1;
+        article['id'] = Math.random().toFixed(3) * 1000;
         articles.push(article);
         localStorage.setItem('articles', JSON.stringify(articles));
     };
